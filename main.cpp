@@ -9,6 +9,11 @@ void fun_b(int a[], int tam);
 void ejercicio01()
 {
     cout << "Ejercicio 01" << endl;
+    cout << " Codifica el programa que se muestra a continuación: Con ayuda del debugger, examina la representación en memoria del arreglo array y responde las siguientes preguntas. " << endl;
+    cout << "● ¿Cuál es su dirección en memoria?" << endl;
+    cout << "● ¿Cuántos bytes se dedican para almacenar cada elemento de array?" << endl;
+    cout << "● ¿Cuál es la dirección y el contenido en memoria del elemento array[3]?" << endl;
+    cout << "● Describe el efecto que tiene la función fun_b, sobre el arreglo array." << endl;
 
     int array[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -78,6 +83,7 @@ void fun_c(double *a, int n, double *promedio, double *suma)
 void ejercicio02()
 {
     cout << "Ejercicio 02" << endl;
+    cout << "La función que se ilustra a continuación calcula el promedio de los elementos de un arreglo de tamaño n. Promedio y suma apuntan a variables que la función modifica por referencia. Desafortunadamente, la función contiene errores; encuéntralos y corrígelos, de tal manera que su operación sea correcta." << endl;
 
     // Declaramos un arreglo de 5 elementos
 
@@ -99,6 +105,19 @@ void ejercicio02()
 void ejercicio03()
 {
     cout << "Ejercicio 03" << endl;
+    cout << "Se tiene la siguiente declaración e inicialización para el arreglo b: " << endl;
+    cout << "unsigned short b[4][2] = {{77, 50}, {5, 2}, {28, 39}, {99, 3}}; " << endl;
+    cout << "La figura 1, que se presenta a continuación, ilustra la representación del arreglo b en memoria. Completa la " << endl;
+    cout << "numeración de las direcciones de memoria, en notación hexadecimal, para cada elemento del arreglo b. " << endl;
+    cout << "Figura 1. Elementos del arreglo b " << endl;
+    cout << "Determina, de acuerdo a lo ilustrado en la figura 1, el valor correspondiente de las siguientes expresiones: " << endl;
+    cout << "● b: " << "(void *) b" << endl;
+    cout << "● b+2: " << "(void *)(b + 2)" << endl;
+    cout << "● *(b+2): " << "(void *) *(b + 2)" << endl;
+    cout << "● *(b+2)+1: " << "(void *) *(b + 2) + 1" << endl;
+    cout << "● *(*(b+2)+1): " << "(void *) *(*(b + 2) + 1)" << endl;
+    cout << "● b[3][1]: " << "(void *) b[3][1]" << endl;
+    cout << "● *b++: " << "(void *) *b++" << endl;
 
     unsigned short b[4][2] = {{77, 50}, {5, 2}, {28, 39}, {99, 3}};
 
@@ -188,23 +207,167 @@ void loop() {
 void ejercicio04()
 {
     cout << "Ejercicio 04" << endl;
+    cout << "Realiza un circuito en Tinkercad donde la intensidad de iluminación de un LED se pueda variar con un potenciómetro. Debes agregar en Tinkercad una Breadboard Small, un Potenciometer, un Resistor de 220Ω, un LED, y un Arduino. Conecta todos los elementos del circuito de una manera apropiada y programa el Arduino para la tarea pedida." << endl;
+
+    /*
+        Codigo en el simulador Tinkercad
+        https://www.tinkercad.com/things/eZKblQIyBQS/editel?returnTo=%2Fdashboard
+    */
+    /*
+        ******** Codigo ********
+        const int potPin = A0; // Pin analógico donde está conectado el potenciómetro
+        const int ledPin = 9;  // Pin PWM donde está conectado el LED
+
+        void setup() {
+            pinMode(ledPin, OUTPUT);
+        }
+
+        void loop() {
+            int potValue = analogRead(potPin);
+            int ledValue = map(potValue, 0, 1023, 0, 255);
+            analogWrite(ledPin, ledValue);
+        }
+    */
 }
 void ejercicio05()
 {
     cout << "Ejercicio 05" << endl;
+    cout << "Realiza un circuito en Tinkercad para escribir mensajes en un Liquid-Crystal Display (LCD) con la ayuda de Arduino. Cambia de Basic a All en la opción components de Tinkercad. Debe agregar un LCD 16 × 2, y un Arduino. Conecta todos los elementos del circuito de una manera apropiada y programa el Arduino para la tarea pedida." << endl;
+
+    /*
+        Codigo en el simulador Tinkercad
+        https://www.tinkercad.com/things/eZKblQIyBQS/editel?returnTo=%2Fdashboard
+    */
+    /*
+        ******** Codigo ********
+        #include <LiquidCrystal.h>
+        LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // Configuración de pines
+        void setup() {
+            lcd.begin(16, 2); // Inicializa el LCD con 16 columnas y 2 filas
+            lcd.print("Hola, Mundo!"); // Imprime un mensaje en la primera fila
+            lcd.setCursor(0, 1); // Mueve el cursor a la segunda fila
+            lcd.print("LCD con Arduino"); // Imprime otro mensaje en la segunda fila
+        }
+        void loop() {
+            // No se necesita código en el loop para este ejemplo
+        }
+    */
 }
 void problema01()
 {
     cout << "Problema 01" << endl;
+    cout << "Se necesita un programa que permita determinar la minima combinación de billetes y monedas para una cantidad de dinero determinada. Los billetes en circulacion son de $50.000, $20.000, $10.000, $5.000, $2.000 y $1.000, y las monedas son de $500, $200, $100 y $50. Haz un programa que entregue el numero de billetes y monedas de cada denominacion para completar la cantidad deseada. Si por medio de los billetes y monedas disponibles no se puede lograr la cantidad deseada, el sistema deberá decir lo que resta para lograrla. Usa arreglos y ciclos para realizar el programa. Universidad de Antioquia · Facultad de Ingenieria · Ude@ Educacion Virtual Universidad de Antioquia · Facultad de Ingenieria · Ude@ Educacion Virtual disponibles no se puede lograr la cantidad deseada, el sistema deberá decir lo que resta para lograrla. Usa arreglos y ciclos para realizar el programa. " << endl;
+
+    // Programa para determinar la mínima combinación de billetes y monedas
+
+    long long amount;
+
+    // Leer el monto de entrada
+    if (!(cin >> amount))
+    {
+    }
+
+    // Denominaciones disponibles
+    const int denominations[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
+    const int numDenom = sizeof(denominations) / sizeof(denominations[0]);
+
+    // Calcular y mostrar la cantidad de billetes o monedas por denominación
+    for (int i = 0; i < numDenom; ++i)
+    {
+        int count = amount / denominations[i];
+        cout << denominations[i] << ": " << count << "\n";
+        amount %= denominations[i];
+    }
+
+    // Mostrar el faltante, si lo hay
+    cout << "Faltante: " << amount << "\n";
+    cout << "Realiza una versión en Arduino de este programa (en un Arduino físico o Tinkercad), la cantidad de dinero debe ser ingresada con la ayuda del serial. Usa el monitor serial de Arduino o Tinkercad para ingresar los valores necesarios e imprimir. " << endl;
+
+    // Código para Arduino
+    /*
+    void setup() {
+        Serial.begin(9600);
+    }
+
+    void loop() {
+        if (Serial.available() > 0) {
+            long long amount = Serial.parseInt();
+            // Lógica del programa aquí (similar a la del programa en C++)
+            const int denominations[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
+            const int numDenom = sizeof(denominations) / sizeof(denominations[0]);
+            for (int i = 0; i < numDenom; ++i) {
+                int count = amount / denominations[i];
+                Serial.print(denominations[i]);
+                Serial.print(": ");
+                Serial.println(count);
+                amount %= denominations[i];
+            }
+            Serial.print("Faltante: ");
+            Serial.println(amount);
+
+        }
+    }
+    */
 }
 void problema02()
 {
     cout << "Problema 02" << endl;
+    cout << "Elabora un programa que genere un arreglo de 200 letras mayúsculas aleatorias, imprime este arreglo y luego imprime cuantas veces se repita cada letra en el mismo." << endl;
+
+    const int N = 200;
+    const int ALPHABET_SIZE = 26;
+
+    // Arreglo para almacenar letras
+    char letters[N];
+
+    // Arreglo de conteo
+    int counts[ALPHABET_SIZE] = {0};
+
+    // Generar letras "pseudoaleatorias" (simuladas mediante fórmula)
+    for (int i = 0; i < N; ++i)
+    {
+        char letter = 'A' + (i * 17 + 3) % ALPHABET_SIZE; // simple fórmula para variar letras
+        letters[i] = letter;
+        counts[letter - 'A']++;
+    }
+
+    // Imprimir las letras generadas
+    for (int i = 0; i < N; ++i)
+    {
+        cout << letters[i];
+        if ((i + 1) % 50 == 0)
+            cout << "\n"; // Salto de línea cada 50 letras
+    }
+    cout << "\n";
+
+    // Imprimir la frecuencia de cada letra
+    for (int i = 0; i < ALPHABET_SIZE; ++i)
+    {
+        if (counts[i] > 0)
+        {
+            cout << char('A' + i) << ": " << counts[i] << "\n";
+        }
+    }
+}
+bool iguales(string a, string b)
+{
+    return a == b;
 }
 void problema03()
 {
     cout << "Problema 03" << endl;
+    cout << "Haz una función que compare 2 cadenas de caracteres y retorne un valor lógico verdadero si son iguales, y falso en caso contrario, no olvides también tener en cuenta la longitud de las cadenas. Escribe un programa de prueba. " << endl;
+
+    string x, y;
+    getline(cin, x);
+    getline(cin, y);
+
+    if (iguales(x, y))
+        cout << "Iguales\n";
+    else
+        cout << "Distintas\n";
 }
+
 void problema04()
 {
     cout << "Problema 04" << endl;
